@@ -118,3 +118,5 @@ lihat status juju:
 ```
 juju status
 ```
+
+jika sudah di step sini lalu ada yang error, coba cek file problem-solv ;v
