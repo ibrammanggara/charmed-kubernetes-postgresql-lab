@@ -10,6 +10,31 @@ sudo snap install juju --classic
 juju version
 ```
 
+setup vm1 in juju controllers 
+```
+ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
+```
+
+lalu koneksikan vm1 ke controller juju:
+
+```
+juju bootstrap manual/ubuntu@{ip-vm1} manual-controller
+```
+
+switch controllers:
+
+```
+juju switch <model-name>
+```
+
+untuk cek controller:
+
+```
+juju controllers
+juju models
+```
+
 setup ssh (remote vm 2 & 3 by private key)
 
 ```scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/```
@@ -29,25 +54,5 @@ Host {ip-vm2}
 Host {ip-vm3}
   User ubuntu
   IdentityFile ~/.ssh/remote.pem
-```
-lalu koneksikan vm 2 dan 3 ke controller juju:
-
-```
-juju bootstrap manual/ubuntu@{ip-vm2} manual-controller
-```
-
-```
-juju bootstrap manual/ubuntu@{ip-vm3} manual-controller
-```
-untuk cek controller:
-
-```
-juju controllers
-juju models
-```
-
-switch controllers:
-```
-juju switch <model-name>
 ```
 
