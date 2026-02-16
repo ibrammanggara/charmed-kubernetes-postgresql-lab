@@ -39,7 +39,7 @@ setup ssh (remote vm 2 & 3 by private key)
 
 ```scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/```
 
-```ssh -i remote.pem ubuntu@13.217.97.251```
+```ssh -i remote.pem ubuntu@{ip-vm1}```
 
 ```chmod 400 ~/.ssh/remote.pem```
 
