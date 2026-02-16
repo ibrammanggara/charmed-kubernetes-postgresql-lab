@@ -3,7 +3,7 @@
 <img src="arsitektur.jpg"/>
 
 ## vm1 (juju)
-setup ssh (remote vm 1 & 2 by private key)
+setup ssh (remote vm 2 & 3 by private key)
 
 ```scp -i remote.pem remote.pem ubuntu@13.217.97.251:~/.ssh/```
 
