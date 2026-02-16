@@ -3,6 +3,13 @@
 <img src="arsitektur.jpg"/>
 
 ## vm1 (juju)
+
+install juju 
+```
+sudo snap install juju --classic
+juju version
+```
+
 setup ssh (remote vm 2 & 3 by private key)
 
 ```scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/```
