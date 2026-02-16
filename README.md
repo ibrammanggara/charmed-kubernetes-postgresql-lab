@@ -35,7 +35,13 @@ juju controllers
 juju models
 ```
 
-setup ssh (remote vm 2 & 3 by private key)
+lalu buat directory untuk storageclass di vm3:
+```
+sudo mkdir -p /mnt/postgres/data
+sudo chmod 777 /mnt/postgres/data
+```
+
+lalu setup ssh di vm1 (remote vm 2 & 3 by private key)
 
 ```scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/```
 
