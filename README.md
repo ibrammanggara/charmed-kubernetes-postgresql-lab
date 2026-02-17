@@ -98,10 +98,10 @@ juju machines
 akan terlihat =
 ```
 ubuntu@juju:~$ juju machines
-Machine  State    Address        Inst id              Base          AZ  Message
-0        started  172.31.45.222  manual:              ubuntu@24.04      Manually provisioned machine
-1        started  172.31.32.69   manual:54.81.75.173  ubuntu@24.04      Manually provisioned machine
-2        started  172.31.40.233  manual:3.81.4.171    ubuntu@24.04      Manually provisioned machine
+Machine  State    Address        Inst id               Base          AZ  Message
+0        started  172.31.45.222  manual:               ubuntu@24.04      Manually provisioned machine
+1        started  172.31.32.69   manual:54.221.54.249  ubuntu@24.04      Manually provisioned machine
+2        started  172.31.40.233  manual:13.221.191.162 ubuntu@24.04      Manually provisioned machine
 ```
 
 deploy charmed-kubernetes yang diperlukan:
