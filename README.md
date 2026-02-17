@@ -230,10 +230,16 @@ kubectl get pv
 
 ## deploy postgresql-k8s
 
-p
+di VM1:
 
 ```
-p
+juju deploy postgresql-k8s --trust
+```
+
+set storageclass
+
+```
+juju config postgresql-k8s storage-class=local-postgres
 ```
 
 
