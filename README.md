@@ -170,3 +170,79 @@ lalu save dan jalankan :
 ```
 sudo sysctl --system
 ```
+
+## lanjut setup storageclass untuk postgresql-k8s
+
+di VM3:
+
+```
+sudo mkdir -p /mnt/postgres/data
+sudo chmod 777 /mnt/postgres/data
+```
+
+lalu di VM1:
+
+```
+snap install kubectl --classic
+juju run kubernetes-control-plane/0 get-kubeconfig > kubeconfig
+```
+edit file kubeconfig, hapus pada (kubeconfig: ) dan (' ') di dalam kutip adalah isi json yang dibutuhkan untuk config
+lalu:
+
+```
+mv kubeconfig ~/.kube/config
+chmod 600 ~/.kube/config
+export KUBECONFIG=$HOME/.kube/config
+```
+
+tes:
+
+```
+kubectl get nodes
+```
+
+result:
+
+```
+ubuntu@ip-172-31-46-100:~$ kubectl get nodes
+NAME               STATUS   ROLES           AGE   VERSION
+ip-172-31-36-198   Ready    control-plane   43m   v1.34.4
+ip-172-31-46-67    Ready    <none>          42m   v1.34.4 (ini VM3 = worker)
+
+```
+
+masuk ke folder setup, lalu:
+
+```
+kubectl apply -f storageclass.yaml
+```
+pada file pv-postgres.yaml edit pada values ganti name alamat ip internal (worker) dari output get nodes
+
+```
+kubectl apply -f pv-postgres.yaml
+```
+
+cek ini, dan status harus available:
+
+```
+kubectl get pv
+```
+
+## deploy postgresql-k8s
+
+p
+
+```
+p
+```
+
+
+
+
+
+
+
+
+
+
+
