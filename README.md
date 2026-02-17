@@ -141,6 +141,8 @@ lihat status juju:
 juju status
 ```
 
+<img src="status.jpeg"/>
+
 # problem solv
 
 jika pada jaringan default settingan:
