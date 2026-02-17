@@ -119,4 +119,4 @@ lihat status juju:
 juju status
 ```
 
-jika sudah di step sini lalu ada yang error, coba cek file problem-solv ;v
+jika sudah di step sini lalu coba cek file .md
