@@ -140,3 +140,31 @@ lihat status juju:
 ```
 juju status
 ```
+
+# problem solv
+
+jika pada jaringan default settingan:
+
+```
+net.ipv4.conf.all.rp_filter = 1
+```
+kami menggunakan jaringan vpc pada aws dengan default seperti di atas, maka cara atasi:
+
+```
+sudo nano /etc/sysctl.d/99-calico.conf
+```
+
+isi lengkap:
+
+```
+net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.default.rp_filter=0
+net.ipv4.conf.<interface-eth0>.rp_filter=0
+```
+
+note : ganti pada <interface-eth0> sesuai interface yang digunakan
+lalu save dan jalankan :
+
+```
+sudo sysctl --system
+```
