@@ -115,10 +115,24 @@ juju deploy calico
 
 ```
 
-hubungkan worker ke control plane:
+relasikan satu per satu:
 
 ```
-p
+juju relate easyrsa etcd
+juju relate easyrsa kubernetes-control-plane
+juju relate easyrsa kubernetes-worker
+
+
+juju relate etcd kubernetes-control-plane
+
+juju relate kubernetes-control-plane:kube-control kubernetes-worker:kube-control
+
+juju relate calico kubernetes-control-plane
+juju relate calico kubernetes-worker
+
+juju deploy containerd
+juju relate containerd kubernetes-control-plane
+juju relate containerd kubernetes-worker
 ```
 
 lihat status juju:
