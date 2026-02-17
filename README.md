@@ -4,41 +4,46 @@
 
 ## vm1 (juju)
 
+siapkan 3VM dan update paket:
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
 install juju 
 ```
 sudo snap install juju --classic
 juju version
 ```
 
-setup vm1 in juju controllers 
+setup VM1 untuk login juju dengan pubkey sendiri:
 ```
 ssh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
 ```
 
-lalu koneksikan vm1 ke controller juju:
+lalu koneksikan VM1 ke controller juju:
 
 ```
 juju bootstrap manual/ubuntu@{ip-vm1} manual-controller
 ```
+cek models:
 
-switch controllers:
+```
+juju models
+```
+
+switch models:
 
 ```
 juju switch <model-name>
 ```
 
-untuk cek controller:
+### untuk cek controller:
 
 ```
 juju controllers
 juju models
-```
-
-lalu buat directory untuk storageclass di vm3:
-```
-sudo mkdir -p /mnt/postgres/data
-sudo chmod 777 /mnt/postgres/data
 ```
 
 lalu setup ssh di vm1 (remote vm 2 & 3 by private key)
