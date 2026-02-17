@@ -2,6 +2,13 @@
 
 <img src="arsitektur.jpg"/>
 
+3VM terdiri:
+```
+VM1 : juju controller
+VM2 : control plane dll..
+VM3 : worker
+```
+
 ## vm1 (juju)
 
 siapkan 3VM dan update paket:
@@ -17,6 +24,7 @@ juju version
 ```
 
 setup VM1 untuk login juju dengan pubkey sendiri:
+
 ```
 ssh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
@@ -46,15 +54,23 @@ juju controllers
 juju models
 ```
 
-lalu setup ssh di vm1 (remote vm 2 & 3 by private key)
+lalu setup ssh di vm1 (remote vm 2 & 3 by private key) buka terminal baru yang tersedia privatekey yang digunakan:
 
-```scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/```
+```
+scp -i remote.pem remote.pem ubuntu@{ip-vm1}:~/.ssh/
+```
 
-```ssh -i remote.pem ubuntu@{ip-vm1}```
+```
+ssh -i remote.pem ubuntu@{ip-vm1}
+```
 
-```chmod 400 ~/.ssh/remote.pem```
+```
+chmod 400 ~/.ssh/remote.pem
+```
 
-```nano ~/.ssh/config```
+```
+nano ~/.ssh/config
+```
 
 isi kan ini:
 ```
@@ -88,34 +104,21 @@ Machine  State    Address        Inst id              Base          AZ  Message
 2        started  172.31.40.233  manual:3.81.4.171    ubuntu@24.04      Manually provisioned machine
 ```
 
-deploy control-plane(vm2) dan kubernetes-worker(vm3):
+deploy charmed-kubernetes yang diperlukan:
 
 ```
+juju deploy easyrsa --to 1
+juju deploy etcd --to 1
 juju deploy kubernetes-control-plane --to 1
 juju deploy kubernetes-worker --to 2
-```
-
-deploy container runtime:
-
-```
-juju deploy containerd
-juju integrate kubernetes-control-plane containerd
-juju integrate kubernetes-worker containerd
-```
-
-deploy networking(calico):
-
-```
 juju deploy calico
-juju integrate calico kubernetes-control-plane
-juju integrate calico kubernetes-worker
 
 ```
 
 hubungkan worker ke control plane:
 
 ```
-juju integrate kubernetes-worker:kube-control kubernetes-control-plane:kube-control
+p
 ```
 
 lihat status juju:
@@ -123,5 +126,3 @@ lihat status juju:
 ```
 juju status
 ```
-
-jika sudah di step sini lalu coba cek file .md
