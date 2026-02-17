@@ -112,12 +112,13 @@ juju deploy etcd --to 1
 juju deploy kubernetes-control-plane --to 1
 juju deploy kubernetes-worker --to 2
 juju deploy calico
-
+juju deploy containerd
 ```
 
 relasikan satu per satu:
 
 ```
+juju relate calico etcd
 juju relate easyrsa etcd
 juju relate easyrsa kubernetes-control-plane
 juju relate easyrsa kubernetes-worker
@@ -130,7 +131,6 @@ juju relate kubernetes-control-plane:kube-control kubernetes-worker:kube-control
 juju relate calico kubernetes-control-plane
 juju relate calico kubernetes-worker
 
-juju deploy containerd
 juju relate containerd kubernetes-control-plane
 juju relate containerd kubernetes-worker
 ```
