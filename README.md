@@ -176,9 +176,7 @@ sudo sysctl --system
 di VM3:
 
 ```
-sudo rm -rf /mnt/postgres
 sudo mkdir -p /mnt/postgres/data
-sudo chown -R root:root /mnt/postgres
 sudo chmod -R 777 /mnt/postgres
 ```
 
