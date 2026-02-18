@@ -177,7 +177,8 @@ di VM3:
 
 ```
 sudo mkdir -p /mnt/postgres/data
-sudo chmod 777 /mnt/postgres/data
+sudo chown -R 999:999 /mnt/postgres/data
+sudo chmod 700 /mnt/postgres/data
 ```
 
 lalu di VM1:
@@ -222,21 +223,27 @@ cek ini, dan status harusnya available:
 kubectl get pv
 ```
 
-## deploy postgresql-k8s dengan storageclass
+## deploy postgresql-k8s via juju
 
-di VM1:
+di VM1, buat model kubernetes, pilih opsi no 3 "both" pada input add-k8s :
+
+```
+juju add-k8s cloud-app-k8s
+juju add-model k8s-model cloud-app-k8s
+juju switch k8s-model
+```
+
+deploy:
 
 ```
 juju deploy postgresql-k8s --trust
 ```
 
-set storageclass
+watch:
 
 ```
-juju config postgresql-k8s storage-class=local-postgres
+juju status --watch 5s
 ```
-
-
 
 
 
