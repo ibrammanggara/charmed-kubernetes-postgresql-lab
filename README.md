@@ -183,16 +183,10 @@ sudo chmod 777 /mnt/postgres/data
 lalu di VM1:
 
 ```
-snap install kubectl --classic
-juju run kubernetes-control-plane/0 get-kubeconfig > kubeconfig
-```
-edit file kubeconfig, hapus pada (kubeconfig: ) dan (' ') di dalam kutip adalah isi json yang dibutuhkan untuk config
-lalu:
-
-```
-mv kubeconfig ~/.kube/config
+sudo snap install kubectl --classic
+juju scp kubernetes-control-plane/0:config config
+mv config ~/.kube/config
 chmod 600 ~/.kube/config
-export KUBECONFIG=$HOME/.kube/config
 ```
 
 tes:
@@ -201,7 +195,7 @@ tes:
 kubectl get nodes
 ```
 
-result:
+result contoh:
 
 ```
 ubuntu@ip-172-31-46-100:~$ kubectl get nodes
@@ -228,7 +222,7 @@ cek ini, dan status harus available:
 kubectl get pv
 ```
 
-## deploy postgresql-k8s
+## deploy postgresql-k8s dengan storageclass
 
 di VM1:
 
