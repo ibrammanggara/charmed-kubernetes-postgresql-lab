@@ -210,13 +210,13 @@ masuk ke folder setup, lalu:
 ```
 kubectl apply -f storageclass.yaml
 ```
-pada file pv-postgres.yaml edit pada values ganti name alamat ip internal (worker) dari output get nodes
+pada file pv-postgres.yaml edit pada values ganti name alamat ip internal (worker) dari output get nodes, lalu:
 
 ```
 kubectl apply -f pv-postgres.yaml
 ```
 
-cek ini, dan status harus available:
+cek ini, dan status harusnya available:
 
 ```
 kubectl get pv
