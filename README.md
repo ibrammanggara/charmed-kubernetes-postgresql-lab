@@ -150,7 +150,7 @@ jika pada jaringan default settingan:
 ```
 net.ipv4.conf.all.rp_filter = 1
 ```
-kami menggunakan jaringan vpc pada aws dengan default seperti di atas, maka cara atasi:
+kami menggunakan jaringan vpc pada aws dengan default seperti di atas, maka cara atasi di VM2 dan VM3:
 
 ```
 sudo nano /etc/sysctl.d/99-calico.conf
