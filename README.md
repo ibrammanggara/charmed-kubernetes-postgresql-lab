@@ -181,6 +181,14 @@ sudo chown -R 999:999 /mnt/postgres/data
 sudo chmod 700 /mnt/postgres/data
 ```
 
+harus seperti contoh ini:
+
+```
+ubuntu@ip-172-31-28-30:~$ ls -ldn /mnt/postgres/data
+drwx------ 2 999 999 4096 Feb 18 13:18 /mnt/postgres/data (id harus 999)
+ubuntu@ip-172-31-28-30:~$ 
+```
+
 lalu di VM1:
 
 ```
