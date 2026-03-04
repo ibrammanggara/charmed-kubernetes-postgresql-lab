@@ -248,7 +248,7 @@ juju status --watch 5s
 
 
 
-# Contributor
+# With
 
 <a href="https://github.com/aushafy">@aushafy<a>
 
